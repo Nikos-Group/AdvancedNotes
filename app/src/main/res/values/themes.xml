@@ -2,12 +2,12 @@
     <!-- Base application theme. -->
     <style name="Theme.AdvancedNotes" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/grey_E</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimary">@color/pale_grey</item>
+        <item name="colorPrimaryVariant">@color/dark_blue</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/white</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorSecondaryVariant">@color/grey_E</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimary</item>
@@ -18,6 +18,6 @@
     </style>
 
     <style name="Theme.AdvancedNotes.Launcher" parent="Theme.AdvancedNotes">
-        <item name="android:windowBackground">@drawable/ic_launcher_foreground</item>
+        <item name="android:windowBackground">@drawable/launch_screen</item>
     </style>
 </resources>

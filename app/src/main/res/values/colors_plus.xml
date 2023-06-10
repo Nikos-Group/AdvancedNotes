@@ -8,6 +8,9 @@
     <color name="grey_C">#C0C0C0</color>
     <color name="grey_E">#E0E0E0</color>
 
+    <color name="pale_grey">#F0F0F0</color>
+    <color name="dark_grey">#101010</color>
+
     <color name="red">#FF0000</color>
     <color name="green">#00FF00</color>
     <color name="blue">#0000FF</color>
