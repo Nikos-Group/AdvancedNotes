@@ -8,8 +8,7 @@ import kotlinx.android.parcel.Parcelize
 @Entity(tableName = "notes")
 @Parcelize
 /**
- * @Parcelize - это аннотация,
- * которая используется для
+ * Данная аннотация спользуется для
  * автоматического создания Parcelable класса
  */
 data class Note(

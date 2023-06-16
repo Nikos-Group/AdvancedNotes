@@ -31,6 +31,7 @@ class NewNoteFragment : Fragment(R.layout.fragment_new_note) {
         /**
          * Этот метод устанавливает флаг,
          * указывающий на наличие меню опций в фрагменте.
+         *
          * Флаг установлен в true ->
          * вызывается метод onCreateOptionsMenu(),
          * который позволяет определить,
@@ -89,9 +90,9 @@ class NewNoteFragment : Fragment(R.layout.fragment_new_note) {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
         menu.clear()
         inflater.inflate(R.menu.new_note_menu, menu)
-        super.onCreateOptionsMenu(menu, inflater)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

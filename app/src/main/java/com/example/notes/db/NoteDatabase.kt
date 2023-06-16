@@ -19,6 +19,10 @@ abstract class NoteDatabase : RoomDatabase(), Parcelable {
 
         private val LOCK = Any()
 
+        /**
+         * оператор позволяет создавать объект базы данных с помощью вызова самого класса,
+         * не используя ключевое слово new
+         */
         operator fun invoke(context: Context) = instance ?: synchronized(LOCK) {
             instance ?: createDatabase(context).also {
                 instance = it

@@ -12,7 +12,6 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import com.example.notes.R
-import com.example.notes.activities.MainActivity
 import com.example.notes.databinding.FragmentUpdateNoteBinding
 import com.example.notes.helper.toast
 import com.example.notes.model.Note
@@ -50,9 +49,9 @@ class UpdateNoteFragment : Fragment(R.layout.fragment_update_note) {
 
         val noteTitle = arguments?.get("noteTitle")
 
-        noteViewModel.getNote(noteTitle as String).observe(viewLifecycleOwner, Observer {
-            currentNote = it
-        })
+        noteViewModel.searchNote(noteTitle as String).observe(viewLifecycleOwner) { list ->
+            currentNote = list[0]
+        }
 
         binding.edNoteTitleUpdate.setText(currentNote.noteTitle)
         binding.edNoteBodyUpdate.setText(currentNote.noteBody)
@@ -66,6 +65,8 @@ class UpdateNoteFragment : Fragment(R.layout.fragment_update_note) {
                 val note = Note(currentNote.id, title, body)
 
                 noteViewModel.updateNote(note)
+
+                activity?.toast("Note updated!")
 
                 view.findNavController().navigate(
                     R.id.action_updateNoteFragment_to_homeFragment
@@ -99,7 +100,7 @@ class UpdateNoteFragment : Fragment(R.layout.fragment_update_note) {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         menu.clear()
-        inflater.inflate(R.menu.update_menu, menu)
+        inflater.inflate(R.menu.delete_note_menu, menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
 

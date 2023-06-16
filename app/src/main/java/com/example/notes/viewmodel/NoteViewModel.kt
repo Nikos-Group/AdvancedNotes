@@ -34,5 +34,5 @@ class NoteViewModel(
 
     fun getAllNotes() = noteRepository.getAllNotes()
 
-    fun getNote(noteTitle: String) = noteRepository.getNote(noteTitle)
+    fun searchNote(query: String?) = noteRepository.searchNote(query)
 }

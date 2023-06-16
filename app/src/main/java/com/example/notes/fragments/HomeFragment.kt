@@ -7,6 +7,8 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
+import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.notes.R
@@ -16,7 +18,7 @@ import com.example.notes.databinding.FragmentHomeBinding
 import com.example.notes.model.Note
 import com.example.notes.viewmodel.NoteViewModel
 
-class HomeFragment : Fragment(R.layout.fragment_home) {
+class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextListener {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
@@ -109,7 +111,37 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.home_menu, menu)
         super.onCreateOptionsMenu(menu, inflater)
+        menu.clear()
+        inflater.inflate(R.menu.home_menu, menu)
+
+        val mMenuSearch = menu.findItem(R.id.menu_search)
+            .actionView as SearchView
+
+        mMenuSearch.isSubmitButtonEnabled = true
+
+        mMenuSearch.setOnQueryTextListener(this)
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        query?.let {
+            searchNotes(query)
+        }
+        return true
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        newText?.let {
+            searchNotes(newText)
+        }
+        return true
+    }
+
+    private fun searchNotes(query: String?) {
+        val searchQuery = "%$query%"
+
+        noteViewModel.searchNote(searchQuery).observe(this) { list ->
+            noteAdapter.differ.submitList(list)
+        }
     }
 }

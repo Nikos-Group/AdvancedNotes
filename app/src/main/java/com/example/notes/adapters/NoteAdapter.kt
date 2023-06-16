@@ -11,13 +11,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.notes.R
 import com.example.notes.databinding.NoteLayoutAdapterBinding
 import com.example.notes.model.Note
-import kotlin.random.Random
 
 class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
 
     private var binding: NoteLayoutAdapterBinding? = null
 
-    class NoteViewHolder(itemBinding: NoteLayoutAdapterBinding) :
+    class NoteViewHolder(val itemBinding: NoteLayoutAdapterBinding) :
         RecyclerView.ViewHolder(itemBinding.root)
 
     private val differCallback =
@@ -43,14 +42,11 @@ class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
         parent: ViewGroup,
         viewType: Int
     ): NoteViewHolder {
-
-        binding = NoteLayoutAdapterBinding.inflate(
-            LayoutInflater.from(parent.context),
-            parent,
-            false
+        return NoteViewHolder(
+            NoteLayoutAdapterBinding.inflate(
+                LayoutInflater.from(parent.context), parent, false
+            )
         )
-
-        return NoteViewHolder(binding!!)
     }
 
     override fun onBindViewHolder(
@@ -59,23 +55,21 @@ class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
     ) {
         val currentNote = differ.currentList[position]
 
-        holder.itemView.apply {
+        holder.itemBinding.tvNoteTitle.text = currentNote.noteTitle
+        holder.itemBinding.tvNoteBody.text = currentNote.noteBody
 
-            binding?.tvNoteTitle?.text = currentNote.noteTitle
-            binding?.tvNoteBody?.text = currentNote.noteBody
+        val random = java.util.Random()
 
-            val random = Random()
+        val color = Color.argb(
+            255,
+            random.nextInt(256),
+            random.nextInt(256),
+            random.nextInt(256)
+        )
 
-            val color = Color.argb(
-                255,
-                random.nextInt(256),
-                random.nextInt(256),
-                random.nextInt(256)
-            )
+        holder.itemBinding.viewColor.setBackgroundColor(color)
 
-            binding?.viewColor?.setBackgroundColor(color)
-
-        }.setOnClickListener { mView ->
+        holder.itemView.setOnClickListener { mView ->
 
             val bundle = Bundle()
             bundle.putString("noteTitle", currentNote.noteTitle)
