@@ -1,7 +1,9 @@
 plugins {
     id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-android'
     id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
@@ -28,12 +30,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_19
+        targetCompatibility JavaVersion.VERSION_19
     }
+
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '19'
     }
 }
 
@@ -55,7 +59,7 @@ dependencies {
 
     // Room
     implementation "androidx.room:room-runtime:2.5.1"
-    annotationProcessor "androidx.room:room-compiler:2.5.1"
+    kapt "androidx.room:room-compiler:2.5.1"
 
     // Kotlin Extensions and Coroutines support for Room
     implementation "androidx.room:room-ktx:2.5.1"
@@ -68,7 +72,4 @@ dependencies {
     // androidx.fragment
     debugImplementation "androidx.fragment:fragment-testing:1.6.0"
     implementation "androidx.fragment:fragment-ktx:1.6.0"
-
-    // Parcelize
-    implementation 'org.jetbrains.kotlin:kotlin-android-extensions-runtime:1.5.30'
 }

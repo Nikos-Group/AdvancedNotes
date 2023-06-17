@@ -1,28 +1,23 @@
 package com.example.notes.db
 
 import android.content.Context
-import android.os.Parcelable
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.notes.model.Note
 
 @Database(entities = [Note::class], version = 1)
-abstract class NoteDatabase : RoomDatabase(), Parcelable {
+abstract class NoteDatabase : RoomDatabase() {
 
     abstract fun getNoteDao(): NoteDao
 
-    /** Объявление объекта внутри класса отмечается ключевым словом companion */
+    // Объявление объекта внутри класса отмечается ключевым словом companion
     companion object {
         @Volatile
         private var instance: NoteDatabase? = null
 
         private val LOCK = Any()
 
-        /**
-         * оператор позволяет создавать объект базы данных с помощью вызова самого класса,
-         * не используя ключевое слово new
-         */
         operator fun invoke(context: Context) = instance ?: synchronized(LOCK) {
             instance ?: createDatabase(context).also {
                 instance = it

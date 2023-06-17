@@ -21,6 +21,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setSupportActionBar(binding.toolBar)
+        /**
+         * устанавливает указанный ToolBar в качестве основной панели приложения
+         * для MainActivity
+         */
+
+        setUpViewModel()
     }
 
     private fun setUpViewModel() {

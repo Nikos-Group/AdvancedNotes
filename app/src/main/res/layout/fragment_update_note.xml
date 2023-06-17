@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_white"
-    tools:context=".fragments.UpdateNoteFragment">
+    tools:context=".fragments.NewNoteFragment">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -18,6 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="16dp"
+            android:background="@color/white"
             android:elevation="8dp"
             app:cardCornerRadius="5dp">
 
@@ -32,7 +33,6 @@
                     android:id="@+id/edNoteTitleUpdate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:autofillHints=""
                     android:background="@android:color/transparent"
                     android:hint="Title"
                     android:inputType="text"
@@ -46,15 +46,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="16dp"
-                    android:autofillHints=""
                     android:background="@android:color/transparent"
                     android:gravity="start|top"
                     android:hint="Type something..."
                     android:inputType="textMultiLine"
                     android:textColor="@color/black"
                     android:textColorHint="@color/hintColor"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:textSize="18sp" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
     </LinearLayout>

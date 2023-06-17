@@ -12,7 +12,15 @@ class NoteViewModel(
     private val noteRepository: NoteRepository
 ) : AndroidViewModel(app) {
 
-    fun addNote(note: Note) = viewModelScope.launch {// запуск новой сопрограммы в фоне
+    /**
+     * launch() - это функция запуска асинхронной операции
+     *
+     * Она создает новый корутин и выполняет переданную ей функцию
+     * в отдельном потоке,
+     * не блокируя основной поток выполнения программы
+     */
+
+    fun addNote(note: Note) = viewModelScope.launch {
         noteRepository.addNote(note)
     }
 
@@ -26,10 +34,11 @@ class NoteViewModel(
 
     /**
      * viewModelScope - это элемент архитектуры,
-     * который предназначен для управления жизненным циклом ViewModel.
+     * который предназначен для управления жизненным циклом ViewModel
+     *
      * Он позволяет создавать корутины,
      * которые будут запускаться в пределах жизненного цикла ViewModel,
-     * что гарантирует их остановку при уничтожении ViewModel.
+     * что гарантирует их остановку при уничтожении ViewModel
      */
 
     fun getAllNotes() = noteRepository.getAllNotes()

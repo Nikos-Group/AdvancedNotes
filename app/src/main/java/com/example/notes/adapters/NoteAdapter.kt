@@ -19,18 +19,25 @@ class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
     class NoteViewHolder(val itemBinding: NoteLayoutAdapterBinding) :
         RecyclerView.ViewHolder(itemBinding.root)
 
+    /** используется для сравнения двух списков типа Note */
     private val differCallback =
         object : DiffUtil.ItemCallback<Note>() {
             /**
              * DiffUtil.ItemCallback - класс,
              * ответственный за вычисление разницы между двумя списками
              */
-            override fun areItemsTheSame(oldItem: Note, newItem: Note): Boolean {
-                /** сравниваем индексы элементов */
+            override fun areItemsTheSame(
+                oldItem: Note,
+                newItem: Note
+            ): Boolean {
+                /** сравниваем идентификаторы элементов */
                 return oldItem.id == newItem.id
             }
 
-            override fun areContentsTheSame(oldItem: Note, newItem: Note): Boolean {
+            override fun areContentsTheSame(
+                oldItem: Note,
+                newItem: Note
+            ): Boolean {
                 /** сравниваем содержимое элементов */
                 return oldItem == newItem
             }
@@ -38,13 +45,21 @@ class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
 
     val differ = AsyncListDiffer(this, differCallback)
 
+    /**
+     * AsyncListDiffer - это класс,
+     * который поддерживает список с автоматическим обновлением
+     * после изменения
+     */
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): NoteViewHolder {
         return NoteViewHolder(
             NoteLayoutAdapterBinding.inflate(
-                LayoutInflater.from(parent.context), parent, false
+                LayoutInflater.from(parent.context),
+                parent,
+                false
             )
         )
     }

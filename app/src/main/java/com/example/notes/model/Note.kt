@@ -1,17 +1,18 @@
 package com.example.notes.model
 
 import android.os.Parcelable
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 
-@Suppress("DEPRECATED_ANNOTATION")
 @Entity(tableName = "notes")
 @Parcelize
 /**
  * Данная аннотация спользуется для
  * автоматического создания Parcelable класса
  */
+
 data class Note(
     /**
      * data - класс содержит в себе следующие функции:
@@ -22,6 +23,8 @@ data class Note(
      */
     @PrimaryKey(autoGenerate = true)
     val id: Int,
+    @ColumnInfo(name = "noteTitle")
     val noteTitle: String,
+    @ColumnInfo(name = "noteBody")
     val noteBody: String
 ) : Parcelable

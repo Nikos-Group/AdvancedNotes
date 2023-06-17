@@ -49,9 +49,10 @@ class UpdateNoteFragment : Fragment(R.layout.fragment_update_note) {
 
         val noteTitle = arguments?.get("noteTitle")
 
-        noteViewModel.searchNote(noteTitle as String).observe(viewLifecycleOwner) { list ->
-            currentNote = list[0]
-        }
+        noteViewModel.searchNote(noteTitle as String)
+            .observe(viewLifecycleOwner) { list ->
+                currentNote = list[0]
+            }
 
         binding.edNoteTitleUpdate.setText(currentNote.noteTitle)
         binding.edNoteBodyUpdate.setText(currentNote.noteBody)
@@ -99,9 +100,9 @@ class UpdateNoteFragment : Fragment(R.layout.fragment_update_note) {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
         menu.clear()
         inflater.inflate(R.menu.delete_note_menu, menu)
-        super.onCreateOptionsMenu(menu, inflater)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

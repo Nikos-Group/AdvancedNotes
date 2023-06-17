@@ -19,6 +19,7 @@
         android:contentDescription="image"
         android:src="@drawable/pencil"
         android:tintMode="@color/white"
+        app:borderWidth="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

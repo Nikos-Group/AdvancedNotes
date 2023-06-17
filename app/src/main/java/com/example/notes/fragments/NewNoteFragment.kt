@@ -19,7 +19,6 @@ import com.google.android.material.snackbar.Snackbar
 class NewNoteFragment : Fragment(R.layout.fragment_new_note) {
 
     private var _binding: FragmentNewNoteBinding? = null
-
     private val binding get() = _binding!!
 
     private lateinit var noteViewModel: NoteViewModel
@@ -30,7 +29,7 @@ class NewNoteFragment : Fragment(R.layout.fragment_new_note) {
         setHasOptionsMenu(true)
         /**
          * Этот метод устанавливает флаг,
-         * указывающий на наличие меню опций в фрагменте.
+         * указывающий на наличие меню опций в фрагменте
          *
          * Флаг установлен в true ->
          * вызывается метод onCreateOptionsMenu(),
