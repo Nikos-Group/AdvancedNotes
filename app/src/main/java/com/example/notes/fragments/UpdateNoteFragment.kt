@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import com.example.notes.R
+import com.example.notes.activities.MainActivity
 import com.example.notes.databinding.FragmentUpdateNoteBinding
 import com.example.notes.helper.toast
 import com.example.notes.model.Note
@@ -47,12 +48,9 @@ class UpdateNoteFragment : Fragment(R.layout.fragment_update_note) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val noteTitle = arguments?.get("noteTitle")
+        noteViewModel = (activity as MainActivity).noteViewModel
 
-        noteViewModel.searchNote(noteTitle as String)
-            .observe(viewLifecycleOwner) { list ->
-                currentNote = list[0]
-            }
+        currentNote = arguments?.get("note") as Note
 
         binding.edNoteTitleUpdate.setText(currentNote.noteTitle)
         binding.edNoteBodyUpdate.setText(currentNote.noteBody)

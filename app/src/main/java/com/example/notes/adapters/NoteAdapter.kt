@@ -87,7 +87,7 @@ class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
         holder.itemView.setOnClickListener { mView ->
 
             val bundle = Bundle()
-            bundle.putString("noteTitle", currentNote.noteTitle)
+            bundle.putParcelable("note", currentNote)
 
             mView.findNavController().navigate(
                 R.id.action_homeFragment_to_updateNoteFragment,
