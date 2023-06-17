@@ -71,7 +71,12 @@ class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
         val currentNote = differ.currentList[position]
 
         holder.itemBinding.tvNoteTitle.text = currentNote.noteTitle
-        holder.itemBinding.tvNoteBody.text = currentNote.noteBody
+
+        if (currentNote.noteBody.length >= 60) {
+            holder.itemBinding.tvNoteBody.text = currentNote.noteBody.take(60) + "..."
+        } else {
+            holder.itemBinding.tvNoteBody.text = currentNote.noteBody
+        }
 
         val random = java.util.Random()
 

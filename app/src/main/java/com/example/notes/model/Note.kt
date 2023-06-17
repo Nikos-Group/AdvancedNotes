@@ -23,6 +23,8 @@ data class Note(
      */
     @PrimaryKey(autoGenerate = true)
     val id: Int,
+    @ColumnInfo(name = "noteColor")
+    val noteColor: String,
     @ColumnInfo(name = "noteTitle")
     val noteTitle: String,
     @ColumnInfo(name = "noteBody")
