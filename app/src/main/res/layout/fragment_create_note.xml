@@ -133,15 +133,15 @@
                 android:layout_height="@dimen/_25sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
-                tools:ignore="MissingConstraints"
                 android:background="@drawable/background_delete"
                 android:contentDescription="@string/app_name"
                 android:padding="@dimen/_4sdp"
                 android:src="@drawable/ic_delete"
-                app:tint="@color/colorWhite"
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="@id/imageNote"
-                app:layout_constraintTop_toTopOf="@id/imageNote"/>
+                app:layout_constraintTop_toTopOf="@id/imageNote"
+                app:tint="@color/colorWhite"
+                tools:ignore="MissingConstraints" />
 
             <LinearLayout
                 android:id="@+id/layoutWebURL"
@@ -164,14 +164,14 @@
                     android:fontFamily="@font/ubuntu_regular"
                     android:includeFontPadding="false"
                     android:textSize="@dimen/_13ssp" />
-                
+
                 <ImageView
                     android:id="@+id/imageRemoveWebURL"
                     android:layout_width="@dimen/_20sdp"
-                    android:src="@drawable/ic_delete"
-                    android:contentDescription="@string/app_name"
                     android:layout_height="@dimen/_20sdp"
-                    app:tint="@color/colorDeleteDe" />
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/ic_delete"
+                    app:tint="@color/colorDelete" />
             </LinearLayout>
 
             <EditText
@@ -200,6 +200,5 @@
     </ScrollView>
 
     <include
-        android:id="@+id/layoutMiscellaneous"
         layout="@layout/layout_miscellaneous" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

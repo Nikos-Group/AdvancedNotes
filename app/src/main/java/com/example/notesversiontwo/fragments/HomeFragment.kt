@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.SearchView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.notesversiontwo.R
 import com.example.notesversiontwo.activities.MainActivity
@@ -42,11 +43,7 @@ class HomeFragment : Fragment(R.layout.fragment_home),
 
         imageLang = binding.imageLang
 
-        val searchItem = binding.inputSearch as SearchView
-
-        searchItem.isSubmitButtonEnabled = true
-
-        searchItem.setOnQueryTextListener(this)
+        settingUpASearchItem()
 
         return binding.root
     }
@@ -58,9 +55,11 @@ class HomeFragment : Fragment(R.layout.fragment_home),
 
         setupRecyclerView()
 
-        // TODO binding.addNote.setOnClickListener { mView ->
-        //     mView.findNavController().navigate(R.id.)
-        //  TODO }
+        binding.addNote.setOnClickListener { mView ->
+            mView.findNavController().navigate(
+                R.id.action_homeFragment_to_createNoteFragment
+            )
+        }
 
         imageLang.setOnClickListener {
             showMenuForSelectionLanguage()
@@ -96,29 +95,31 @@ class HomeFragment : Fragment(R.layout.fragment_home),
         }
     }
 
-    private fun showMenuForSelectionLanguage() {
-        val context =  activity?.applicationContext
-        val menu = PopupMenu(
-            context,
-            activity?.findViewById(R.id.fragment)
-        )
+    /** TODO метод дл менюшки
+     * private fun showMenuForSelectionLanguage() {
+    val context =  activity?.applicationContext
+    val menu = PopupMenu(
+    context,
+    activity?.findViewById(R.id.fragment)
+    )
 
-        val id_1 = Identifiers.ID_RUSSIAN_LANGUAGE
-        val id_2 = Identifiers.ID_RUSSIAN_LANGUAGE
-        menu.menu.add(0, id_1, Menu.NONE, "Russian")
-        menu.menu.add(0, id_2, Menu.NONE, "English")
+    val id_1 = Identifiers.ID_RUSSIAN_LANGUAGE
+    val id_2 = Identifiers.ID_RUSSIAN_LANGUAGE
+    menu.menu.add(0, id_1, Menu.NONE, "Russian")
+    menu.menu.add(0, id_2, Menu.NONE, "English")
 
-        menu.setOnMenuItemClickListener {
-            when(it.itemId) {
-                id_1 -> {
+    menu.setOnMenuItemClickListener {
+    when(it.itemId) {
+    id_1 -> {
 
-                }
-                id_2 -> {
-
-                }
-            }
-        }
     }
+    id_2 -> {
+
+    }
+    }
+    }
+    } */
+
     private fun updateUI(notes: List<Note>) {
         if (notes.isNotEmpty()) {
             binding.noteRecyclerView.visibility = View.VISIBLE
@@ -127,6 +128,14 @@ class HomeFragment : Fragment(R.layout.fragment_home),
             binding.noteRecyclerView.visibility = View.GONE
             binding.textNoNotes.visibility = View.VISIBLE
         }
+    }
+
+    private fun settingUpASearchItem() {
+        val searchItem = binding.inputSearch as SearchView
+
+        searchItem.isSubmitButtonEnabled = true
+
+        searchItem.setOnQueryTextListener(this)
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
