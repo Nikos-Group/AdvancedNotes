@@ -3,19 +3,17 @@ package com.example.notesversiontwo.fragments
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.PopupMenu
-import android.widget.SearchView
+import androidx.appcompat.widget.SearchView;
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.notesversiontwo.R
 import com.example.notesversiontwo.activities.MainActivity
 import com.example.notesversiontwo.adapters.NoteAdapter
 import com.example.notesversiontwo.databinding.FragmentHomeBinding
-import com.example.notesversiontwo.classes_for_menu.Identifiers
 import com.example.notesversiontwo.model.Note
 import com.example.notesversiontwo.viewmodel.NoteViewModel
 
@@ -28,8 +26,6 @@ class HomeFragment : Fragment(R.layout.fragment_home),
     private lateinit var noteViewModel: NoteViewModel
     private lateinit var noteAdapter: NoteAdapter
 
-    private lateinit var imageLang: ImageView
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,9 +37,7 @@ class HomeFragment : Fragment(R.layout.fragment_home),
             false
         )
 
-        imageLang = binding.imageLang
-
-        settingUpASearchItem()
+        setting_up_searchItem()
 
         return binding.root
     }
@@ -55,15 +49,27 @@ class HomeFragment : Fragment(R.layout.fragment_home),
 
         setupRecyclerView()
 
+
+        // 1. todo Доделать
         binding.addNote.setOnClickListener { mView ->
             mView.findNavController().navigate(
                 R.id.action_homeFragment_to_createNoteFragment
             )
         }
-
-        imageLang.setOnClickListener {
-            showMenuForSelectionLanguage()
-        }
+        /**
+            * Когда пользователь нажимает на кнопку,
+            * она передает экземпляр текущего представления мView
+            * в функцию обратного вызова
+            *
+            * Функция findNavController() вызывается у mView
+            * для поиска объекта NavController,
+            * который управляет навигацией между фрагментами
+            *
+            * Затем используется функция navigate(),
+            * который принимает идентификатор действия перехода
+            * из текущего фрагмента
+            * в фрагмент CreateNoteFragment
+         */
     }
 
     override fun onDestroy() {
@@ -95,31 +101,6 @@ class HomeFragment : Fragment(R.layout.fragment_home),
         }
     }
 
-    /** TODO метод дл менюшки
-     * private fun showMenuForSelectionLanguage() {
-    val context =  activity?.applicationContext
-    val menu = PopupMenu(
-    context,
-    activity?.findViewById(R.id.fragment)
-    )
-
-    val id_1 = Identifiers.ID_RUSSIAN_LANGUAGE
-    val id_2 = Identifiers.ID_RUSSIAN_LANGUAGE
-    menu.menu.add(0, id_1, Menu.NONE, "Russian")
-    menu.menu.add(0, id_2, Menu.NONE, "English")
-
-    menu.setOnMenuItemClickListener {
-    when(it.itemId) {
-    id_1 -> {
-
-    }
-    id_2 -> {
-
-    }
-    }
-    }
-    } */
-
     private fun updateUI(notes: List<Note>) {
         if (notes.isNotEmpty()) {
             binding.noteRecyclerView.visibility = View.VISIBLE
@@ -130,8 +111,8 @@ class HomeFragment : Fragment(R.layout.fragment_home),
         }
     }
 
-    private fun settingUpASearchItem() {
-        val searchItem = binding.inputSearch as SearchView
+    private fun `setting_up_searchItem`() {
+        val searchItem = binding.inputSearch
 
         searchItem.isSubmitButtonEnabled = true
 

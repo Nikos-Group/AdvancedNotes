@@ -17,8 +17,6 @@ import com.example.notesversiontwo.model.Note
 
 class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
 
-    private var binding: ItemContainerNoteBinding? = null
-
     class NoteViewHolder(val itemBinding: ItemContainerNoteBinding) :
         RecyclerView.ViewHolder(itemBinding.root)
 
@@ -90,8 +88,7 @@ class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
 
         gradientColor.setColor(
             Color.parseColor(
-                currentNote?.noteColor
-                    ?: "#333333"
+                currentNote?.noteColor ?: "#333333"
             )
         )
 
@@ -105,7 +102,6 @@ class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
                 bundle
             )
         }
-
     }
 
     override fun getItemCount(): Int {
