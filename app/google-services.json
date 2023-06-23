@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "628707548061",
+    "project_id": "advanced-notes-c693b",
+    "storage_bucket": "advanced-notes-c693b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:628707548061:android:73b078f925fe56f1daed74",
+        "android_client_info": {
+          "package_name": "com.nikos_group.advancednotes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "628707548061-4gcv7enn33b311hi6ta5dp0r4b3vul55.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6aFriqWmyWgxXJB3LuuAZoTELhKFYGGc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "628707548061-4gcv7enn33b311hi6ta5dp0r4b3vul55.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

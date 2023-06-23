@@ -3,7 +3,7 @@
     <style name="Theme.AdvancedNotes" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/pale_grey</item>
-        <item name="colorPrimaryVariant">@color/dark_blue</item>
+        <item name="colorPrimaryVariant">@color/blue</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/white</item>
@@ -15,6 +15,7 @@
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:navigationBarColor">?attr/colorPrimary</item>
         <item name="android:colorBackground">?attr/colorPrimary</item>
+        <item name="android:background">?attr/colorPrimary</item>
     </style>
 
     <style name="Theme.AdvancedNotes.Launcher" parent="Theme.AdvancedNotes">
