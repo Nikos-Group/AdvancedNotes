@@ -25,6 +25,7 @@ import android.widget.TextView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
+import com.bumptech.glide.Glide
 import com.example.notesversiontwo.activities.MainActivity
 import com.example.notesversiontwo.R
 import com.example.notesversiontwo.databinding.FragmentCreateNoteBinding
@@ -477,44 +478,17 @@ class CreateNoteFragment :
                 val selectedImageUri = it.data
                 selectedImageUri?.also {
                     try {
-                        val inputStream =
-                            activity?.contentResolver!!.openInputStream(it)
-
-                        val bitmap = BitmapFactory.decodeStream(inputStream)
-
-                        imageViews[2].setImageBitmap(bitmap)
+                        activity?.baseContext?.let { it1 -> Glide.with(it1).load(selectedImageUri).into(imageViews[2]) }
                         imageViews[2].visibility = View.VISIBLE
                         imageViews[3].visibility = View.VISIBLE
 
-                        imagePath = getPathFromUri(selectedImageUri)
-
+                        imagePath = selectedImageUri.toString()
                     } catch (exception: Exception) {
                         activity?.toast(exception.message.toString())
                     }
                 }
             }
         }
-    }
-
-    private fun getPathFromUri(contentUri: Uri): String {
-        var filePath: String? = null
-
-        val cursor = activity?.contentResolver!!.query(
-            contentUri,
-            null,
-            null,
-            null
-        )
-
-        cursor?.let {
-            filePath = contentUri.path!!
-        } ?: { cursor: Cursor ->
-            cursor.moveToFirst()
-            val index = cursor.getColumnIndex("_data")
-            filePath = cursor.getString(index)
-            cursor.close()
-        }
-        return filePath ?: "string"
     }
 
     private fun saveNote(view: View) {
