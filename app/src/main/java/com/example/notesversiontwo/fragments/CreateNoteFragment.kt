@@ -4,12 +4,9 @@ import android.app.Activity
 import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.database.Cursor
-import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.GradientDrawable
-import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Patterns
@@ -175,35 +172,35 @@ class CreateNoteFragment :
             ).format(Date())
 
         /**
-            * Этот код устанавливает текст для объекта textDateTime,
-            * отображая текущую дату и время в указанном формате
+         * Этот код устанавливает текст для объекта textDateTime,
+         * отображая текущую дату и время в указанном формате
 
-            * "EEEE" указывает,
-            * что нужно отображать день недели полностью,
-            * например, "вторник"
+         * "EEEE" указывает,
+         * что нужно отображать день недели полностью,
+         * например, "вторник"
 
-            * "dd" указывает,
-            * что нужно отображать день месяца,
-            * например, "20"
+         * "dd" указывает,
+         * что нужно отображать день месяца,
+         * например, "20"
 
-            * "MMMM" указывает,
-            * что нужно отображать название месяца полностью,
-            * например, "июня"
+         * "MMMM" указывает,
+         * что нужно отображать название месяца полностью,
+         * например, "июня"
 
-            * "yyyy" указывает,
-            * что нужно отображать год в четырехзначном формате,
-            * например, "2023"
+         * "yyyy" указывает,
+         * что нужно отображать год в четырехзначном формате,
+         * например, "2023"
 
-            * "HH" указывает,
-            * что нужно отображать часы в 24 - часовом формате,
-            * например, "22"
+         * "HH" указывает,
+         * что нужно отображать часы в 24 - часовом формате,
+         * например, "22"
 
-            * "mm" указывает,
-            * что нужно отображать минуты,
-            * например, "30"
+         * "mm" указывает,
+         * что нужно отображать минуты,
+         * например, "30"
 
-            * Locale.getDefault() используется для задания
-            * региональных настроек по умолчанию
+         * Locale.getDefault() используется для задания
+         * региональных настроек по умолчанию
          */
 
         selectedNoteColor = colors[0]
@@ -394,7 +391,8 @@ class CreateNoteFragment :
         view.textAdd.setOnClickListener {
 
             if (inputURL.text.toString()
-                    .trim().isEmpty())
+                    .trim().isEmpty()
+            )
                 activity?.toast("Enter URL")
             else if (!Patterns.WEB_URL
                     .matcher(inputURL.text.toString())
@@ -429,6 +427,18 @@ class CreateNoteFragment :
         }
     }
 
+    private fun selectImage() {
+        val intent = Intent(
+            Intent.ACTION_PICK,
+            MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+        )
+        activity?.let {
+            intent.resolveActivity(it.packageManager)?.let {
+                startActivityForResult(intent, REQUEST_CODE_SELECT_IMAGE)
+            }
+        }
+    }
+
     private fun `all_permissions_granted_read_external_storage`(): Boolean {
         return activity?.let {
             ContextCompat.checkSelfPermission(
@@ -453,18 +463,6 @@ class CreateNoteFragment :
         } else activity?.toast("Permission Denied!")
     }
 
-    private fun selectImage() {
-        val intent = Intent(
-            Intent.ACTION_PICK,
-            MediaStore.Images.Media.EXTERNAL_CONTENT_URI
-        )
-        activity?.let {
-            intent.resolveActivity(it.packageManager)?.let {
-                startActivityForResult(intent, REQUEST_CODE_SELECT_IMAGE)
-            }
-        }
-    }
-
     override fun onActivityResult(
         requestCode: Int,
         resultCode: Int,
@@ -478,7 +476,11 @@ class CreateNoteFragment :
                 val selectedImageUri = it.data
                 selectedImageUri?.also {
                     try {
-                        activity?.baseContext?.let { it1 -> Glide.with(it1).load(selectedImageUri).into(imageViews[2]) }
+                        activity?.baseContext?.let { it1 ->
+                            Glide.with(it1)
+                                .load(selectedImageUri).into(imageViews[2])
+                        }
+
                         imageViews[2].visibility = View.VISIBLE
                         imageViews[3].visibility = View.VISIBLE
 
@@ -500,7 +502,10 @@ class CreateNoteFragment :
         if (noteTitle.isEmpty()) {
             activity?.toast("Note title can't be empty!")
             return
-        } else if (noteSubTitle.isEmpty() && noteBody.isEmpty()) {
+        } else if (noteSubTitle.isEmpty()) {
+            activity?.toast("Note subtitle can't be empty!")
+            return
+        } else if(noteBody.isEmpty()) {
             activity?.toast("Note can't be empty!")
             return
         }
