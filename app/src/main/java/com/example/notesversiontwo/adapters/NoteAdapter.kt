@@ -1,6 +1,6 @@
 package com.example.notesversiontwo.adapters
 
-import android.graphics.BitmapFactory
+import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
@@ -11,18 +11,20 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.notesversiontwo.R
 import com.example.notesversiontwo.databinding.ItemContainerNoteBinding
 import com.example.notesversiontwo.model.Note
 
-class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
+class NoteAdapter
+constructor(private val context: Context) : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
 
     class NoteViewHolder(val itemBinding: ItemContainerNoteBinding) :
         RecyclerView.ViewHolder(itemBinding.root)
 
     /**
-     * DiffUtil.ItemCallback - класс,
-     * ответственный за вычисление разницы между двумя списками
+        * DiffUtil.ItemCallback - класс,
+        * ответственный за вычисление разницы между двумя списками
      */
     private val differCallback =
         object : DiffUtil.ItemCallback<Note>() {
@@ -44,10 +46,10 @@ class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
         }
 
     /**
-     * AsyncListDiffer - это класс,
-     * который поддерживает список
-     * с автоматическим обновлением
-     * после изменения
+        * AsyncListDiffer - это класс,
+        * который поддерживает список
+        * с автоматическим обновлением
+        * после изменения
      */
     val differ = AsyncListDiffer(this, differCallback)
 
@@ -71,17 +73,7 @@ class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
         val currentNote = differ.currentList[position]
 
         holder.itemBinding.textTitle.text = currentNote.noteTitle
-
-        holder.itemBinding.textSubtitle.text = currentNote.noteTitle
-
-        currentNote.imagePath?.let {
-
-            holder.itemBinding.imageNote
-                .setImageBitmap(BitmapFactory.decodeFile(it))
-
-            holder.itemBinding.imageNote.visibility = View.VISIBLE
-
-        } ?: { holder.itemBinding.imageNote.visibility = View.GONE }
+        holder.itemBinding.textSubtitle.text = currentNote.noteSubtitle
 
         val gradientColor = holder.itemBinding.layoutNote
             .background as GradientDrawable
@@ -92,13 +84,18 @@ class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
             )
         )
 
+        currentNote.imagePath?.let {
+            Glide.with(context).load(it).into(holder.itemBinding.imageNote)
+            holder.itemBinding.imageNote.visibility = View.VISIBLE
+        } ?: { holder.itemBinding.imageNote.visibility = View.GONE }
+
         holder.itemView.setOnClickListener { mView ->
 
             val bundle = Bundle()
             bundle.putParcelable("note", currentNote)
 
             mView.findNavController().navigate(
-                R.id.action_homeFragment_to_createNoteFragment,
+                R.id.action_homeFragment_to_updateNoteFragment,
                 bundle
             )
         }

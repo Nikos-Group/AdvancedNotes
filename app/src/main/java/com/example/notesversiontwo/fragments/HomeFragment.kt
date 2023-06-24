@@ -5,10 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.appcompat.widget.SearchView;
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.notesversiontwo.R
 import com.example.notesversiontwo.activities.MainActivity
@@ -27,7 +25,8 @@ class HomeFragment : Fragment(R.layout.fragment_home),
     private lateinit var noteAdapter: NoteAdapter
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
 
@@ -42,23 +41,24 @@ class HomeFragment : Fragment(R.layout.fragment_home),
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?
+    ) {
         super.onViewCreated(view, savedInstanceState)
 
         noteViewModel = (activity as MainActivity).noteViewModel
 
         setupRecyclerView()
 
-
-        // 1. todo Доделать
         binding.addNote.setOnClickListener { mView ->
             mView.findNavController().navigate(
                 R.id.action_homeFragment_to_createNoteFragment
             )
         }
         /**
-            * Когда пользователь нажимает на кнопку,
-            * она передает экземпляр текущего представления мView
+            * Когда пользователь нажимает на изображение,
+            * оно передает экземпляр текущего представления мView
             * в функцию обратного вызова
             *
             * Функция findNavController() вызывается у mView
@@ -78,7 +78,7 @@ class HomeFragment : Fragment(R.layout.fragment_home),
     }
 
     private fun setupRecyclerView() {
-        noteAdapter = NoteAdapter()
+        noteAdapter = activity?.let { NoteAdapter(it.baseContext) }!!
 
         binding.noteRecyclerView.apply {
 
@@ -115,7 +115,6 @@ class HomeFragment : Fragment(R.layout.fragment_home),
         val searchItem = binding.inputSearch
 
         searchItem.isSubmitButtonEnabled = true
-
         searchItem.setOnQueryTextListener(this)
     }
 

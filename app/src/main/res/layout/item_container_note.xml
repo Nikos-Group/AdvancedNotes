@@ -34,12 +34,12 @@
         android:id="@+id/textSubtitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_8sdp"
-        android:layout_marginTop="@dimen/_4sdp"
-        android:layout_marginEnd="@dimen/_8sdp"
-        android:layout_marginBottom="@dimen/_4sdp"
+        android:layout_marginStart="@dimen/_11sdp"
+        android:layout_marginTop="@dimen/_7sdp"
+        android:layout_marginEnd="@dimen/_11sdp"
+        android:layout_marginBottom="@dimen/_7sdp"
         android:fontFamily="@font/ubuntu_regular"
         android:includeFontPadding="false"
         android:textColor="@color/colorNoteSubtitleText"
-        android:textSize="@dimen/_7ssp" />
+        android:textSize="@dimen/_10ssp" />
 </LinearLayout>

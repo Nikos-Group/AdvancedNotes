@@ -47,7 +47,7 @@
             android:includeFontPadding="false"
             android:inputType="text"
             android:textColor="@color/colorWhite"
-            android:textColorHint="@color/colorTextHint"
+            android:textColorHint="@color/colorPrimary"
             android:textSize="@dimen/_13ssp"
             app:queryHint="@string/search_notes"
             app:searchIcon="@drawable/ic_search" />

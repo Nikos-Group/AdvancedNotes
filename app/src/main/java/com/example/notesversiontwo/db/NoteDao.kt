@@ -13,9 +13,9 @@ import com.example.notesversiontwo.model.Note
 interface NoteDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     /**
-        * onConflict - стратегия борьбы с конфликтом
-        *
-        * REPLACE - замена существующих строк новыми
+     * onConflict - стратегия борьбы с конфликтом
+     *
+     * REPLACE - замена существующих строк новыми
      */
     suspend fun addNote(note: Note)
 
