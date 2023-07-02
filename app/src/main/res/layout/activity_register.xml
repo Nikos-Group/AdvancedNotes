@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterActivity"
-    android:padding="32dp">
+    android:padding="32dp"
+    tools:context=".activities.RegisterActivity">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:text="Welcome to Advanced Notes"
         android:textColor="?attr/colorPrimaryVariant"
-        android:textSize="36sp"
-        android:text="Welcome to Advanced Notes" />
+        android:textSize="36sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,47 +24,47 @@
             android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="8dp"
             android:background="@drawable/authentification_input_field_shape"
+            android:hint="username"
+            android:padding="8dp"
             android:textColor="?attr/colorPrimaryVariant"
-            android:textSize="16sp"
-            android:hint="username" />
+            android:textSize="16sp" />
 
         <EditText
             android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:padding="8dp"
             android:background="@drawable/authentification_input_field_shape"
-            android:textColor="?attr/colorPrimaryVariant"
-            android:textSize="16sp"
+            android:hint="email"
             android:inputType="textEmailAddress"
-            android:hint="email" />
+            android:padding="8dp"
+            android:textColor="?attr/colorPrimaryVariant"
+            android:textSize="16sp" />
 
         <EditText
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:padding="8dp"
             android:background="@drawable/authentification_input_field_shape"
-            android:textColor="?attr/colorPrimaryVariant"
-            android:textSize="16sp"
+            android:hint="password"
             android:inputType="textPassword"
-            android:hint="password" />
+            android:padding="8dp"
+            android:textColor="?attr/colorPrimaryVariant"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/sign_up"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:padding="8dp"
-            android:gravity="center"
             android:background="@drawable/authentication_button_shape"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="Sign up"
             android:textColor="?attr/colorPrimaryVariant"
-            android:textSize="24sp"
-            android:text="Sign up" />
+            android:textSize="24sp" />
 
     </LinearLayout>
 
@@ -78,20 +77,18 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="already have an account?"
             android:textColor="?attr/colorPrimaryVariant"
-            android:textSize="16sp"
-            android:text="already have an account?" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/sign_in"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
+            android:text="Sign in"
             android:textColor="?attr/colorPrimaryVariant"
             android:textSize="16sp"
-            android:textStyle="bold"
-            android:text="Sign in" />
-
+            android:textStyle="bold" />
     </LinearLayout>
-
 </RelativeLayout>

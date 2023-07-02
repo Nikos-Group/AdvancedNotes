@@ -6,7 +6,8 @@
 
     <solid android:color="@color/transparent" />
 
-    <stroke android:width="2dp"
+    <stroke
+        android:width="2dp"
         android:color="?attr/colorPrimaryVariant" />
 
 </shape>
