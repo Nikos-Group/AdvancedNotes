@@ -28,6 +28,7 @@ abstract class NoteDatabase : RoomDatabase() {
             }
         }
 
+        // метод для создания базы данных
         private fun createDatabase(context: Context) = Room.databaseBuilder(
             context.applicationContext,
             NoteDatabase::class.java,
