@@ -3,7 +3,7 @@ package com.example.notesversiontwo.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
-import com.example.notesversiontwo.databinding.ActivityMainBinding
+import com.example.notes.databinding.ActivityMainBinding
 import com.example.notesversiontwo.db.NoteDatabase
 import com.example.notesversiontwo.repository.NoteRepository
 import com.example.notesversiontwo.viewmodel.NoteViewModel

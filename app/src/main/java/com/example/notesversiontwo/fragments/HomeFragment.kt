@@ -8,10 +8,10 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView;
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.example.notesversiontwo.R
+import com.example.notes.R
+import com.example.notes.databinding.FragmentHomeBinding
 import com.example.notesversiontwo.activities.MainActivity
 import com.example.notesversiontwo.adapters.NoteAdapter
-import com.example.notesversiontwo.databinding.FragmentHomeBinding
 import com.example.notesversiontwo.model.Note
 import com.example.notesversiontwo.viewmodel.NoteViewModel
 

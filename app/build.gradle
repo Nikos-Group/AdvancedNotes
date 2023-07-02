@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.notesversiontwo'
+    namespace 'com.example.notes'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.notesversiontwo"
+        applicationId "com.example.notes"
         minSdk 28
         targetSdk 33
         versionCode 1
@@ -48,8 +48,6 @@ dependencies {
     implementation 'com.google.android.material:material:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.6.0'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.6.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
@@ -60,19 +58,28 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.6.1"
 
     // Room
-    implementation "androidx.room:room-runtime:2.5.1"
-    kapt "androidx.room:room-compiler:2.5.1"
+    implementation "androidx.room:room-runtime:2.5.2"
+    kapt "androidx.room:room-compiler:2.5.2"
 
     // Kotlin Extensions and Coroutines support for Room
-    implementation "androidx.room:room-ktx:2.5.1"
-
-    // Scalable Size Unit (support for different screen sizes)
-    implementation "com.intuit.sdp:sdp-android:1.0.6"
-    implementation "com.intuit.ssp:ssp-android:1.0.6"
+    implementation "androidx.room:room-ktx:2.5.2"
 
     // Glide
     implementation 'com.github.bumptech.glide:glide:4.15.1'
 
     // Rounded ImageView
     implementation "com.makeramen:roundedimageview:2.3.0"
+
+    // Navigation Components
+    implementation "androidx.navigation:navigation-fragment-ktx:2.6.0"
+    implementation "androidx.navigation:navigation-ui-ktx:2.6.0"
+    implementation "androidx.navigation:navigation-dynamic-features-fragment:2.6.0"
+
+    // androidx.fragment
+    debugImplementation "androidx.fragment:fragment-testing:1.6.0"
+    implementation "androidx.fragment:fragment-ktx:1.6.0"
+
+    // Scalable Size Unit (support for different screen sizes)
+    implementation "com.intuit.sdp:sdp-android:1.0.6"
+    implementation "com.intuit.ssp:ssp-android:1.0.6"
 }

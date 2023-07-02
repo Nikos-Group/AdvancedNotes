@@ -12,8 +12,8 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.notesversiontwo.R
-import com.example.notesversiontwo.databinding.ItemContainerNoteBinding
+import com.example.notes.R
+import com.example.notes.databinding.ItemContainerNoteBinding
 import com.example.notesversiontwo.model.Note
 
 class NoteAdapter
@@ -73,7 +73,7 @@ constructor(private val context: Context) : RecyclerView.Adapter<NoteAdapter.Not
         val currentNote = differ.currentList[position]
 
         holder.itemBinding.textTitle.text = currentNote.noteTitle
-        holder.itemBinding.textSubtitle.text = currentNote.noteSubtitle
+        holder.itemBinding.dateTime.text = currentNote.dateTime
 
         val gradientColor = holder.itemBinding.layoutNote
             .background as GradientDrawable

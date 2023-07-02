@@ -8,7 +8,7 @@ import com.example.notesversiontwo.model.Note
 
 @Database(
     entities = [Note::class],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 abstract class NoteDatabase : RoomDatabase() {
@@ -31,7 +31,7 @@ abstract class NoteDatabase : RoomDatabase() {
         private fun createDatabase(context: Context) = Room.databaseBuilder(
             context.applicationContext,
             NoteDatabase::class.java,
-            "note_db"
+            "note_db_2"
         ).build()
     }
 }

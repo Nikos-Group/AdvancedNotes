@@ -23,11 +23,11 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import com.bumptech.glide.Glide
+import com.example.notes.R
+import com.example.notes.databinding.FragmentCreateNoteBinding
+import com.example.notes.databinding.LayoutAddUrlBinding
+import com.example.notes.databinding.LayoutMiscellaneousBinding
 import com.example.notesversiontwo.activities.MainActivity
-import com.example.notesversiontwo.R
-import com.example.notesversiontwo.databinding.FragmentCreateNoteBinding
-import com.example.notesversiontwo.databinding.LayoutAddUrlBinding
-import com.example.notesversiontwo.databinding.LayoutMiscellaneousBinding
 import com.example.notesversiontwo.helper.toast
 import com.example.notesversiontwo.model.Note
 import com.example.notesversiontwo.viewmodel.NoteViewModel
@@ -152,8 +152,7 @@ class CreateNoteFragment :
 
     private fun `filling_in_the_list_of_inputFields`() {
         inputFields.add(0, binding.inputNoteTitle)
-        inputFields.add(1, binding.inputNoteSubtitle)
-        inputFields.add(2, binding.inputNoteBody)
+        inputFields.add(1, binding.inputNoteBody)
     }
 
     private fun `filling_in_the_list_of_imageViews`() {
@@ -496,14 +495,10 @@ class CreateNoteFragment :
     private fun saveNote(view: View) {
         val noteTitle = inputFields[0].text.toString().trim()
         val date = textFields[0].text.toString().trim()
-        val noteSubTitle = inputFields[1].text.toString().trim()
-        val noteBody = inputFields[2].text.toString().trim()
+        val noteBody = inputFields[1].text.toString().trim()
 
         if (noteTitle.isEmpty()) {
             activity?.toast("Note title can't be empty!")
-            return
-        } else if (noteSubTitle.isEmpty()) {
-            activity?.toast("Note subtitle can't be empty!")
             return
         } else if(noteBody.isEmpty()) {
             activity?.toast("Note can't be empty!")
@@ -514,7 +509,6 @@ class CreateNoteFragment :
             0,
             noteTitle,
             date,
-            noteSubTitle,
             noteBody,
             imagePath,
             selectedNoteColor
