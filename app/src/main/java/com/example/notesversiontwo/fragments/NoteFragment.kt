@@ -24,8 +24,9 @@ import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import com.bumptech.glide.Glide
 import com.example.notes.R
-import com.example.notes.databinding.FragmentCreateNoteBinding
+import com.example.notes.databinding.FragmentNoteBinding
 import com.example.notes.databinding.LayoutAddUrlBinding
+import com.example.notes.databinding.LayoutDeleteNoteBinding
 import com.example.notes.databinding.LayoutMiscellaneousBinding
 import com.example.notesversiontwo.activities.MainActivity
 import com.example.notesversiontwo.helper.toast
@@ -35,19 +36,21 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.snackbar.Snackbar
 import java.lang.Exception
 import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
+import java.util.*
 
-class CreateNoteFragment :
-    Fragment(R.layout.fragment_create_note),
+class NoteFragment :
+    Fragment(R.layout.fragment_note),
     OnClickListener {
+
+    private lateinit var currentNote: Note
+    private var status: Int = 0
 
     companion object {
         const val REQUEST_CODE_STORAGE_PERMISSION = 99
         const val REQUEST_CODE_SELECT_IMAGE = 100
     }
 
-    private var _binding: FragmentCreateNoteBinding? = null
+    private var _binding: FragmentNoteBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var noteViewModel: NoteViewModel
@@ -78,13 +81,14 @@ class CreateNoteFragment :
 
     // dialog
     private lateinit var dialogAddURL: AlertDialog
+    private lateinit var dialogDeleteNote: AlertDialog
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
 
-        _binding = FragmentCreateNoteBinding.inflate(
+        _binding = FragmentNoteBinding.inflate(
             inflater,
             container,
             false
@@ -103,19 +107,48 @@ class CreateNoteFragment :
         viewSubtitleIndicator = binding.viewSubtitleIndicator
         layoutWebURL = binding.layoutWebURL
 
-        filling_in_the_list_of_colors()
+        /**
+         * Повторение кода!!!
+         */
 
-        filling_in_the_lists_of_views()
-        setting_up_an_initial_values()
-        setting_up_clicks_views()
+        if (arguments?.get("what_does_user_do") == "he creates note") {
+            /** Пользователь создает заметку */
 
-        initialization_LayoutMiscellaneous()
-        filling_in_the_lists_of_layoutMiscellaneous_views()
-        settng_up_clicks_of_layoutMiscellaneous_views()
+            filling_in_the_list_of_colors()
+            filling_in_the_lists_of_views()
 
-        setting_up_dialogAddUrl()
+            setting_up_an_initial_values()
+            setting_up_clicks_views()
 
-        set_subtitle_indicator()
+            initialization_LayoutMiscellaneous()
+            filling_in_the_lists_of_layoutMiscellaneous_views("create")
+            settng_up_clicks_of_layoutMiscellaneous_views("create")
+
+            setting_up_dialogAddUrl()
+
+            set_subtitle_indicator()
+        } else if (arguments?.get("what_does_user_do") == "he edits the note") {
+            /** Пользователь редактирует заметку */
+
+            status = 1
+            currentNote = arguments?.get("note") as Note
+
+            filling_in_the_list_of_colors()
+            filling_in_the_lists_of_views()
+            setting_up_clicks_views()
+
+            initialization_LayoutMiscellaneous()
+            filling_in_the_lists_of_layoutMiscellaneous_views("edit")
+            settng_up_clicks_of_layoutMiscellaneous_views("edit")
+
+            imageViews[1].setBackgroundResource(R.drawable.ic_update)
+            layouts[2].visibility = View.VISIBLE
+
+            setting_up_dialogAddUrl()
+            setting_up_dialogDeleteNote()
+
+            setting_up_noteData()
+        }
     }
 
     override fun onDestroy() {
@@ -163,49 +196,6 @@ class CreateNoteFragment :
         imageViews.add(4, binding.imageRemoveWebURL)
     }
 
-    private fun `setting_up_an_initial_values`() {
-        textFields[0].text =
-            SimpleDateFormat(
-                "EEEE, dd MMMM yyyy HH:mm",
-                Locale.getDefault()
-            ).format(Date())
-
-        /**
-         * Этот код устанавливает текст для объекта textDateTime,
-         * отображая текущую дату и время в указанном формате
-
-         * "EEEE" указывает,
-         * что нужно отображать день недели полностью,
-         * например, "вторник"
-
-         * "dd" указывает,
-         * что нужно отображать день месяца,
-         * например, "20"
-
-         * "MMMM" указывает,
-         * что нужно отображать название месяца полностью,
-         * например, "июня"
-
-         * "yyyy" указывает,
-         * что нужно отображать год в четырехзначном формате,
-         * например, "2023"
-
-         * "HH" указывает,
-         * что нужно отображать часы в 24 - часовом формате,
-         * например, "22"
-
-         * "mm" указывает,
-         * что нужно отображать минуты,
-         * например, "30"
-
-         * Locale.getDefault() используется для задания
-         * региональных настроек по умолчанию
-         */
-
-        selectedNoteColor = colors[0]
-        imagePath = ""
-    }
-
     private fun `setting_up_clicks_views`() {
         imageViews[0].setOnClickListener(this)
         imageViews[1].setOnClickListener(this)
@@ -241,15 +231,18 @@ class CreateNoteFragment :
             BottomSheetBehavior.from(layoutMiscellaneous.miscellaneous)
     }
 
-    private fun `filling_in_the_lists_of_layoutMiscellaneous_views`() {
-        filling_in_the_list_of_layouts()
+    private fun `filling_in_the_lists_of_layoutMiscellaneous_views`(information: String) {
+        filling_in_the_list_of_layouts(information)
         filling_in_the_list_of_viewColors()
         filling_in_the_list_of_imageColors()
     }
 
-    private fun `filling_in_the_list_of_layouts`() {
+    private fun `filling_in_the_list_of_layouts`(information: String) {
         layouts.add(0, layoutMiscellaneous.layoutAddImage)
         layouts.add(1, layoutMiscellaneous.layoutAddUrl)
+        if (information == "edit") {
+            layouts.add(2, layoutMiscellaneous.layoutDeleteNote)
+        }
     }
 
     private fun `filling_in_the_list_of_viewColors`() {
@@ -270,9 +263,9 @@ class CreateNoteFragment :
         imageColors.add(5, layoutMiscellaneous.imageColor6)
     }
 
-    private fun `settng_up_clicks_of_layoutMiscellaneous_views`() {
+    private fun `settng_up_clicks_of_layoutMiscellaneous_views`(information: String) {
         setting_up_click_textMiscellaneous()
-        setting_up_clicks_layouts()
+        setting_up_clicks_layouts(information)
         setting_up_clicks_viewColors()
     }
 
@@ -294,13 +287,20 @@ class CreateNoteFragment :
         }
     }
 
-    private fun `setting_up_clicks_layouts`() {
+    private fun `setting_up_clicks_layouts`(information: String) {
         layouts[0].setOnClickListener { setImage() }
 
         layouts[1].setOnClickListener {
             bottomSheetBehavior.state =
                 BottomSheetBehavior.STATE_COLLAPSED
             dialogAddURL.show()
+        }
+        if (information == "edit") {
+            layouts[2].setOnClickListener {
+                bottomSheetBehavior.state =
+                    BottomSheetBehavior.STATE_COLLAPSED
+                dialogDeleteNote.show()
+            }
         }
     }
 
@@ -372,6 +372,54 @@ class CreateNoteFragment :
         }
     }
 
+    private fun `setting_up_an_initial_values`() {
+        textFields[0].text =
+            SimpleDateFormat(
+                "EEEE, dd MMMM yyyy HH:mm",
+                Locale.getDefault()
+            ).format(Date())
+
+        /**
+         * Этот код устанавливает текст для объекта textDateTime,
+         * отображая текущую дату и время в указанном формате
+
+         * "EEEE" указывает,
+         * что нужно отображать день недели полностью,
+         * например, "вторник"
+
+         * "dd" указывает,
+         * что нужно отображать день месяца,
+         * например, "20"
+
+         * "MMMM" указывает,
+         * что нужно отображать название месяца полностью,
+         * например, "июня"
+
+         * "yyyy" указывает,
+         * что нужно отображать год в четырехзначном формате,
+         * например, "2023"
+
+         * "HH" указывает,
+         * что нужно отображать часы в 24 - часовом формате,
+         * например, "22"
+
+         * "mm" указывает,
+         * что нужно отображать минуты,
+         * например, "30"
+
+         * Locale.getDefault() используется для задания
+         * региональных настроек по умолчанию
+         */
+
+        selectedNoteColor = colors[0]
+        imagePath = ""
+    }
+
+    private fun `set_subtitle_indicator`() {
+        val gradientDrawable = viewSubtitleIndicator.background as GradientDrawable
+        gradientDrawable.setColor(Color.parseColor(selectedNoteColor))
+    }
+
     private fun `setting_up_dialogAddUrl`() {
         val builder = AlertDialog.Builder(context)
 
@@ -409,9 +457,29 @@ class CreateNoteFragment :
         }
     }
 
-    private fun `set_subtitle_indicator`() {
-        val gradientDrawable = viewSubtitleIndicator.background as GradientDrawable
-        gradientDrawable.setColor(Color.parseColor(selectedNoteColor))
+    private fun `setting_up_dialogDeleteNote`() {
+        val builder = AlertDialog.Builder(context)
+
+        val view = LayoutDeleteNoteBinding.inflate(LayoutInflater.from(context))
+
+        builder.setView(view.root)
+        dialogDeleteNote = builder.create()
+
+        dialogDeleteNote.window?.setBackgroundDrawable(
+            ColorDrawable(0)
+        )
+
+        view.textDeleteNote.setOnClickListener {
+            noteViewModel.deleteNote(currentNote)
+            mView.findNavController().navigate(
+                R.id.noteFragment
+            )
+            dialogDeleteNote.dismiss()
+        }
+
+        view.textCancel.setOnClickListener {
+            dialogDeleteNote.dismiss()
+        }
     }
 
     private fun setImage() {
@@ -492,6 +560,43 @@ class CreateNoteFragment :
         }
     }
 
+    private fun `setting_up_noteData`() {
+        inputFields[0].setText(currentNote.noteTitle)
+        inputFields[1].setText(currentNote.noteBody)
+        textFields[0].text = currentNote.dateTime
+
+        if (currentNote.imagePath != null &&
+            currentNote.imagePath.toString().trim().isNotEmpty()
+        ) {
+            activity?.baseContext?.let {
+                Glide.with(it).load(currentNote.imagePath)
+                    .into(imageViews[2])
+            }
+            imageViews[2].visibility = View.VISIBLE
+            imageViews[3].visibility = View.VISIBLE
+            imagePath = currentNote.imagePath!!
+        }
+
+        if (currentNote.webLink != null &&
+            currentNote.webLink.toString().trim().isNotEmpty()
+        ) {
+            textFields[1].text = currentNote.webLink
+            layoutWebURL.visibility = View.VISIBLE
+        }
+
+        if (currentNote.noteColor != null &&
+            currentNote.noteColor!!.trim().isNotEmpty()
+        ) {
+            when (currentNote.noteColor) {
+                colors[0] -> viewColors[0].performClick()
+                colors[1] -> viewColors[1].performClick()
+                colors[2] -> viewColors[2].performClick()
+                colors[3] -> viewColors[3].performClick()
+                colors[4] -> viewColors[4].performClick()
+            }
+        }
+    }
+
     private fun saveNote(view: View) {
         val noteTitle = inputFields[0].text.toString().trim()
         val date = textFields[0].text.toString().trim()
@@ -500,34 +605,53 @@ class CreateNoteFragment :
         if (noteTitle.isEmpty()) {
             activity?.toast("Note title can't be empty!")
             return
-        } else if(noteBody.isEmpty()) {
+        } else if (noteBody.isEmpty()) {
             activity?.toast("Note can't be empty!")
             return
         }
 
-        val note = Note(
-            0,
-            noteTitle,
-            date,
-            noteBody,
-            imagePath,
-            selectedNoteColor
-        )
+        var webLink: String? = null
 
         if (layoutWebURL.visibility == View.VISIBLE) {
-            note.webLink = textFields[1].text.toString()
+            webLink = textFields[1].text.toString()
         }
 
-        noteViewModel.addNote(note)
+        when (status) {
+            0 -> {
+                currentNote = Note(
+                    0,
+                    noteTitle,
+                    date,
+                    noteBody,
+                    imagePath,
+                    selectedNoteColor,
+                    webLink
+                )
+
+                noteViewModel.addNote(currentNote)
+            }
+
+            1 -> {
+                currentNote.noteTitle = noteTitle
+                currentNote.dateTime = date
+                currentNote.noteBody = noteBody
+                currentNote.imagePath = imagePath
+                currentNote.noteColor = selectedNoteColor
+                currentNote.webLink = webLink
+
+                noteViewModel.updateNote(currentNote)
+            }
+        }
 
         Snackbar.make(
             view,
-            "Note saved successfully",
+            if (status == 0) "Note saved successfully"
+            else "Note updated successfully",
             Snackbar.LENGTH_SHORT
         ).show()
 
         mView.findNavController().navigate(
-            R.id.action_createNoteFragment_to_homeFragment
+            R.id.action_noteFragment_to_homeFragment2
         )
     }
 
@@ -535,7 +659,7 @@ class CreateNoteFragment :
         when (view) {
             imageViews[0] -> {
                 mView.findNavController().navigate(
-                    R.id.action_createNoteFragment_to_homeFragment
+                    R.id.action_noteFragment_to_homeFragment2
                 )
             }
 

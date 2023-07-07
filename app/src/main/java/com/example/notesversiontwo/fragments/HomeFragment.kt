@@ -52,8 +52,16 @@ class HomeFragment : Fragment(R.layout.fragment_home),
         setupRecyclerView()
 
         binding.addNote.setOnClickListener { mView ->
+
+            val bundle = Bundle()
+            bundle.putString(
+                "what_does_user_do",
+                "he creates note"
+            )
+
             mView.findNavController().navigate(
-                R.id.action_homeFragment_to_createNoteFragment
+                R.id.action_homeFragment_to_noteFragment,
+                bundle
             )
         }
         /**

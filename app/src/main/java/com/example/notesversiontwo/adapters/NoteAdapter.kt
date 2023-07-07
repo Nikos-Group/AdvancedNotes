@@ -92,10 +92,14 @@ constructor(private val context: Context) : RecyclerView.Adapter<NoteAdapter.Not
         holder.itemView.setOnClickListener { mView ->
 
             val bundle = Bundle()
+            bundle.putString(
+                "what_does_user_do",
+                "he edits the note"
+            )
             bundle.putParcelable("note", currentNote)
 
             mView.findNavController().navigate(
-                R.id.action_homeFragment_to_updateNoteFragment,
+                R.id.action_homeFragment_to_noteFragment,
                 bundle
             )
         }

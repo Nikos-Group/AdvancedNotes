@@ -1,51 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.notesversiontwo.fragments.HomeFragment"
-        android:label="Notes">
+        android:label="Notes"
+        tools:layout="@layout/fragment_home">
         <action
-            android:id="@+id/action_homeFragment_to_createNoteFragment"
-            app:destination="@id/createNoteFragment"
+            android:id="@+id/action_homeFragment_to_noteFragment"
+            app:destination="@id/noteFragment"
             app:enterAnim="@anim/fade_in"
             app:exitAnim="@anim/fade_out"
             app:popEnterAnim="@anim/fade_in"
             app:popExitAnim="@anim/fade_out" />
-        <action
-            android:id="@+id/action_homeFragment_to_updateNoteFragment"
-            app:destination="@id/updateNoteFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/createNoteFragment"
-        android:name="com.example.notesversiontwo.fragments.CreateNoteFragment"
-        android:label="New Note">
+        android:id="@+id/noteFragment"
+        android:name="com.example.notesversiontwo.fragments.NoteFragment"
+        tools:layout="@layout/fragment_note">
         <action
-            android:id="@+id/action_createNoteFragment_to_homeFragment"
+            android:id="@+id/action_noteFragment_to_homeFragment2"
             app:destination="@id/homeFragment"
             app:enterAnim="@anim/fade_in"
             app:exitAnim="@anim/fade_out"
             app:popEnterAnim="@anim/fade_in"
-            app:popExitAnim="@anim/fade_out" />
+            app:popExitAnim="@anim/fade_out" />/>
     </fragment>
-    <fragment
-        android:id="@+id/updateNoteFragment"
-        android:name="com.example.notesversiontwo.fragments.UpdateNoteFragment"
-        android:label="Update Note">
-        <action
-            android:id="@+id/action_updateNoteFragment_to_homeFragment"
-            app:destination="@id/homeFragment"
-            app:enterAnim="@anim/fade_in"
-            app:exitAnim="@anim/fade_out"
-            app:popEnterAnim="@anim/fade_in"
-            app:popExitAnim="@anim/fade_out" />
-        <argument
-            android:name="note"
-            app:argType="com.example.notesversiontwo.model.Note"
-            app:nullable="true" />
-    </fragment>
+
 </navigation>
