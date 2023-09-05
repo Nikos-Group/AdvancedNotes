@@ -1,4 +1,4 @@
-package com.example.notes.fragments
+package com.ariete.notes.fragments
 
 import android.app.AlertDialog
 import android.os.Bundle
@@ -9,14 +9,13 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
-import com.example.notes.R
-import com.example.notes.activities.MainActivity
-import com.example.notes.databinding.FragmentUpdateNoteBinding
-import com.example.notes.helper.toast
-import com.example.notes.model.Note
-import com.example.notes.viewmodel.NoteViewModel
+import com.ariete.notes.R
+import com.ariete.notes.activities.MainActivity
+import com.ariete.notes.databinding.FragmentUpdateNoteBinding
+import com.ariete.notes.helper.toast
+import com.ariete.notes.model.Note
+import com.ariete.notes.viewmodel.NoteViewModel
 
 class UpdateNoteFragment : Fragment(R.layout.fragment_update_note) {
 

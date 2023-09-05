@@ -1,4 +1,4 @@
-package com.example.notes.fragments
+package com.ariete.notes.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,11 +9,12 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
-import com.example.notes.R
-import com.example.notes.activities.MainActivity
-import com.example.notes.databinding.FragmentNewNoteBinding
-import com.example.notes.helper.toast
-import com.example.notes.viewmodel.NoteViewModel
+import com.ariete.notes.R
+import com.ariete.notes.activities.MainActivity
+import com.ariete.notes.databinding.FragmentNewNoteBinding
+import com.ariete.notes.model.Note
+import com.ariete.notes.helper.toast
+import com.ariete.notes.viewmodel.NoteViewModel
 import com.google.android.material.snackbar.Snackbar
 
 class NewNoteFragment : Fragment(R.layout.fragment_new_note) {
@@ -66,7 +67,7 @@ class NewNoteFragment : Fragment(R.layout.fragment_new_note) {
         val noteBody = binding.edNoteBody.text.toString().trim()
 
         if (noteTitle.isNotEmpty()) {
-            val note = com.example.notes.model.Note(
+            val note = Note(
                 0,
                 noteTitle,
                 noteBody

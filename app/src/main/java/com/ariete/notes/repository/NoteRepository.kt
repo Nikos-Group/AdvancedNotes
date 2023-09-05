@@ -1,7 +1,7 @@
-package com.example.notes.repository
+package com.ariete.notes.repository
 
-import com.example.notes.db.NoteDatabase
-import com.example.notes.model.Note
+import com.ariete.notes.db.NoteDatabase
+import com.ariete.notes.model.Note
 
 class NoteRepository(private val db: NoteDatabase) {
 

@@ -1,4 +1,4 @@
-package com.example.notes.helper
+package com.ariete.notes.helper
 
 import android.content.Context
 import android.widget.Toast

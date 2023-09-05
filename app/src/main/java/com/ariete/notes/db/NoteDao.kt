@@ -1,4 +1,4 @@
-package com.example.notes.db
+package com.ariete.notes.db
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
@@ -7,7 +7,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
-import com.example.notes.model.Note
+import com.ariete.notes.model.Note
 
 @Dao
 interface NoteDao {

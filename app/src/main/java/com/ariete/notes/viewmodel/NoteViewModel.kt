@@ -1,10 +1,10 @@
-package com.example.notes.viewmodel
+package com.ariete.notes.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.notes.model.Note
-import com.example.notes.repository.NoteRepository
+import com.ariete.notes.model.Note
+import com.ariete.notes.repository.NoteRepository
 import kotlinx.coroutines.launch
 
 class NoteViewModel(

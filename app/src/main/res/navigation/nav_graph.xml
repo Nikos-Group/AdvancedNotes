@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.notes.fragments.HomeFragment"
+        android:name="com.ariete.notes.fragments.HomeFragment"
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_newNoteFragment"
@@ -26,7 +26,7 @@
     </fragment>
     <fragment
         android:id="@+id/newNoteFragment"
-        android:name="com.example.notes.fragments.NewNoteFragment"
+        android:name="com.ariete.notes.fragments.NewNoteFragment"
         tools:layout="@layout/fragment_new_note">
         <action
             android:id="@+id/action_newNoteFragment_to_homeFragment"
@@ -38,7 +38,7 @@
     </fragment>
     <fragment
         android:id="@+id/updateNoteFragment"
-        android:name="com.example.notes.fragments.UpdateNoteFragment"
+        android:name="com.ariete.notes.fragments.UpdateNoteFragment"
         android:label="Update Note"
         tools:layout="@layout/fragment_update_note">
         <action

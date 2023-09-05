@@ -1,4 +1,4 @@
-package com.example.notes.fragments
+package com.ariete.notes.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,12 +10,12 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.example.notes.R
-import com.example.notes.activities.MainActivity
-import com.example.notes.adapters.NoteAdapter
-import com.example.notes.databinding.FragmentHomeBinding
-import com.example.notes.model.Note
-import com.example.notes.viewmodel.NoteViewModel
+import com.ariete.notes.R
+import com.ariete.notes.activities.MainActivity
+import com.ariete.notes.adapters.NoteAdapter
+import com.ariete.notes.databinding.FragmentHomeBinding
+import com.ariete.notes.model.Note
+import com.ariete.notes.viewmodel.NoteViewModel
 
 class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextListener {
 

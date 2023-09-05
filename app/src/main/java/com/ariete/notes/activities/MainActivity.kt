@@ -1,13 +1,13 @@
-package com.example.notes.activities
+package com.ariete.notes.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
-import com.example.notes.databinding.ActivityMainBinding
-import com.example.notes.db.NoteDatabase
-import com.example.notes.repository.NoteRepository
-import com.example.notes.viewmodel.NoteViewModel
-import com.example.notes.viewmodel.NoteViewModelProviderFactory
+import com.ariete.notes.databinding.ActivityMainBinding
+import com.ariete.notes.db.NoteDatabase
+import com.ariete.notes.repository.NoteRepository
+import com.ariete.notes.viewmodel.NoteViewModel
+import com.ariete.notes.viewmodel.NoteViewModelProviderFactory
 
 class MainActivity : AppCompatActivity() {
 

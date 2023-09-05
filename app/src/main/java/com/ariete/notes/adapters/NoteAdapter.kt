@@ -1,4 +1,4 @@
-package com.example.notes.adapters
+package com.ariete.notes.adapters
 
 import android.graphics.Color
 import android.os.Bundle
@@ -8,9 +8,9 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.notes.R
-import com.example.notes.databinding.NoteLayoutAdapterBinding
-import com.example.notes.model.Note
+import com.ariete.notes.R
+import com.ariete.notes.databinding.NoteLayoutAdapterBinding
+import com.ariete.notes.model.Note
 
 class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
 
