@@ -10,6 +10,10 @@
     <string name="search_notes">Search notes</string>
     <string name="no_notes">There are no notes</string>
 
+    <!-- Note Fragment -->
+    <string name="title_hint">Title</string>
+    <string name="input_hint">Type your note here</string>
+
     <!-- Additional -->
     <string name="additional">Additional</string>
     <string name="change_color">Change color</string>
