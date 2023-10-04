@@ -1,6 +1,17 @@
 plugins {
     id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-android'
+    id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+    /**
+        * The 'kotlin-kapt' plugin is used
+        * to enable and facilitate the usage of Kotlin-specific
+        * annotation processors during the build process.
+        * -------------------------------------------------------
+        * Плагин «kotlin-kapt» используется для включения
+        * и облегчения использования процессоров аннотаций,
+        * специфичных для Kotlin, в процессе сборки.
+    */
 }
 
 android {
@@ -12,33 +23,122 @@ android {
         minSdk 28
         targetSdk 33
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
+        /**
+            * The "release" build type is typically used for generating
+            * a production-ready version of an app.
+            * ---------------------------------------------------------
+            * Тип сборки "release" обычно используется для генерации
+            * "готовой к производству" версии приложения.
+        */
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            /**
+                * "minifyEnabled false" disables code minification
+                * (https://blog.skillfactory.ru/glossary/minifikacziya/) and
+                * obfuscation(https://habr.com/ru/articles/735812/)
+                * for the "release" build type.
+                * ----------------------------------------------------------
+                * "minifyEnabled false" отключает минификацию кода
+                * (https://blog.skillfactory.ru/glossary/minifikacziya/)
+                * и обфускацию (https://habr.com/ru/articles/735812/)
+                * для типа сборки "release"
+            */
+
+            proguardFiles getDefaultProguardFile(
+                    'proguard-android-optimize.txt'
+            ), 'proguard-rules.pro'
+            /**
+                * "proguardFiles" specifies the ProGuard configuration files to use for the
+                * "release" build type.
+                *
+                * The getDefaultProguardFile() function retrieves the default
+                * ProGuard configuration provided by the Android Gradle plugin,
+                * which includes optimizations.
+                *
+                * The 'proguard-rules.pro' file is a custom ProGuard configuration file
+                * where you can add your own rules.
+                * ---------------------------------------------------------------------------------
+                * "proguardFiles" указывает файлы конфигурации
+                * "проф. охраны", которые будут использоваться для типа сборки "release"
+                *
+                * Функция getDefaultProguardFile() получает стандартную "конфигурацию охраны",
+                * предоставляемую Android Gradle плагином,
+                * который включает в себя оптимизации.
+                *
+                * Файл "proguard-rules.pro" - это пользовательский файл "конфигурации охраны"
+                * где вы можете добавить свои собственные правила
+            */
         }
     }
+
+    /**
+        * compileOptions is a block
+        * used to configure Java compilation options
+        * for project.
+        *
+        * This configuration specifies the Java version
+        * to use during compilation.
+        * ------------------------------------------------------------------
+        * compileOptions - это блок,
+        * использующийся для настройки параметров компиляции Java
+        * для проекта.
+        *
+        * Эта конфигурация определяет версию Java, использующуюся во время компиляции.
+    */
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_19
+        targetCompatibility JavaVersion.VERSION_19
     }
-    kotlinOptions {
-        jvmTarget = '1.8'
+
+    buildFeatures {
+        viewBinding true
     }
 }
 
 dependencies {
-
-    implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
+
     implementation 'com.google.android.material:material:1.9.0'
+
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+
+    // todo
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.6.1"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.6.1"
+
+    // todo
+    implementation "androidx.room:room-runtime:2.5.2"
+    kapt "androidx.room:room-compiler:2.5.2"
+
+    // todo
+    // Kotlin Extensions and Coroutines support for Room
+    implementation "androidx.room:room-ktx:2.5.2"
+
+    debugImplementation "androidx.fragment:fragment-testing:1.6.1"
+    implementation "androidx.fragment:fragment-ktx:1.6.1"
+
+    implementation 'androidx.activity:activity-ktx:1.7.2'
+
+    implementation "androidx.navigation:navigation-fragment-ktx:2.5.1"
+    implementation "androidx.navigation:navigation-ui-ktx:2.5.1"
+    implementation "androidx.navigation:navigation-dynamic-features-fragment:2.5.1"
+
+    implementation "com.github.skydoves:colorpickerview:2.2.4"
+
+    implementation 'com.github.bumptech.glide:glide:4.15.1'
+
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 }
