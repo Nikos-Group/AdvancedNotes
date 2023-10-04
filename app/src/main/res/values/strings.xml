@@ -1,5 +1,7 @@
 <resources>
+    <!-- SplashScreen Activity -->
     <string name="app_name">Advanced Notes</string>
+    <string name="company_name">Ariete</string>
 
     <string name="settings">Settings</string>
 </resources>
