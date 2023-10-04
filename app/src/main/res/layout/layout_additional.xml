@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/additional"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background_additional"
+    android:orientation="vertical"
+    android:paddingHorizontal="16dp"
+    app:behavior_peekHeight="56dp"
+    app:layout_behavior="@string/bottom_sheet_behavior">
+
+    <TextView
+        android:id="@+id/text_additional"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.25"
+        android:fontFamily="@font/ubuntu_medium"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="@string/additional"
+        android:textColor="?attr/colorOnSecondary"
+        android:textSize="24sp" />
+
+    <LinearLayout
+        android:id="@+id/layout_change_color"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/app_name"
+        android:gravity="center_vertical"
+        android:background="@drawable/selector_item_layout_additional"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_palette" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:fontFamily="@font/ubuntu_medium"
+            android:text="@string/change_color"
+            android:textColor="?attr/colorOnSecondary"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_add_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/app_name"
+        android:gravity="center_vertical"
+        android:background="@drawable/selector_item_layout_additional"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_image" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:fontFamily="@font/ubuntu_medium"
+            android:text="@string/add_image"
+            android:textColor="?attr/colorOnSecondary"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_add_url"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="16dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:background="@drawable/selector_item_layout_additional"
+        tools:ignore="Orientation,UseCompoundDrawables">
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_web_link" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:fontFamily="@font/ubuntu_medium"
+            android:text="@string/add_url"
+            android:textColor="?attr/colorOnSecondary"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_delete_note"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:background="@drawable/selector_delete_layout_additional"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_delete"
+            app:tint="@color/red" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:fontFamily="@font/ubuntu_medium"
+            android:text="@string/delete_note"
+            android:textColor="@color/red"
+            android:textSize="16sp" />
+    </LinearLayout>
+</LinearLayout>

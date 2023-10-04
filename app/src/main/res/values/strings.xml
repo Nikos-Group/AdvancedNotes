@@ -9,4 +9,11 @@
     <string name="my_notes">My Notes</string>
     <string name="search_notes">Search notes</string>
     <string name="no_notes">There are no notes</string>
+
+    <!-- Additional -->
+    <string name="additional">Additional</string>
+    <string name="change_color">Change color</string>
+    <string name="add_image">Add image</string>
+    <string name="add_url">Add URL</string>
+    <string name="delete_note">Delete note</string>
 </resources>
