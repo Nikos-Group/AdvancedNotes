@@ -4,4 +4,9 @@
     <string name="company_name">Ariete</string>
 
     <string name="settings">Settings</string>
+
+    <!-- Home Fragment -->
+    <string name="my_notes">My Notes</string>
+    <string name="search_notes">Search notes</string>
+    <string name="no_notes">There are no notes</string>
 </resources>

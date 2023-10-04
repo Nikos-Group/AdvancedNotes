@@ -5,15 +5,22 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentContainerView
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.ariete.advancednotes.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.ariete.advancednotes.database.NoteDatabase
 import com.ariete.advancednotes.databinding.ActivityMainBinding
+import com.ariete.advancednotes.repository.NoteRepository
+import com.ariete.advancednotes.viewmodel.NoteViewModel
+import com.ariete.advancednotes.viewmodel.NoteViewModelProviderFactory
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+
+    lateinit var noteViewModel: NoteViewModel
 
     lateinit var bottomNavigation: BottomNavigationView
 
@@ -29,6 +36,8 @@ class MainActivity : AppCompatActivity() {
 
         currentFragment = binding.fragment
         bottomNavigation = binding.bottomNavigation
+
+        setUpViewModel()
     }
 
     override fun onStart() {
@@ -63,10 +72,10 @@ class MainActivity : AppCompatActivity() {
 
             true
             /**
-             * Return true to indicate the item (operation) is selected (applied).
-             * -------------------------------------------------------------------
-             * Возврщаем true, чтобы указать что элемент (операция) выбран (применена).
-             */
+                * Return true to indicate the item (operation) is selected (applied).
+                * -------------------------------------------------------------------
+                * Возврщаем true, чтобы указать что элемент (операция) выбран (применена).
+            */
         }
     }
 
@@ -103,5 +112,21 @@ class MainActivity : AppCompatActivity() {
                 )
             }
         }
+    }
+
+    private fun setUpViewModel() {
+        val noteRepository = NoteRepository(
+            NoteDatabase.invoke(this)
+        )
+
+        val viewModelProviderFactory = NoteViewModelProviderFactory(
+            application,
+            noteRepository
+        )
+
+        noteViewModel = ViewModelProvider(
+            this,
+            viewModelProviderFactory
+        )[NoteViewModel::class.java]
     }
 }

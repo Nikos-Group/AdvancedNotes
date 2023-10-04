@@ -71,7 +71,7 @@ constructor(
         * с автоматическим обновлением
         * после изменения.
      */
-    private val differ = AsyncListDiffer(
+    val differ = AsyncListDiffer(
         this,
         differCallback
     )
