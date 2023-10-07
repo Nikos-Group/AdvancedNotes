@@ -19,5 +19,3 @@ Here are app's screens:
 ![photo_2023-09-05_18-32-08](https://github.com/Nikos-Group/AdvancedNotes/assets/114339722/6c3a2523-fb8c-47ae-9a59-cd4e16ab9115)
 
 ![photo_2023-09-05_18-32-08 (2)](https://github.com/Nikos-Group/AdvancedNotes/assets/114339722/f7d27040-b84f-49e6-98ee-91aba2159687) 
-
-![photo_2023-09-05_18-32-08 (3)](https://github.com/Nikos-Group/AdvancedNotes/assets/114339722/222632f5-b006-4f54-8cd6-bca59f993388)
