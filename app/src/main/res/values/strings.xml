@@ -36,4 +36,7 @@
 
     <!-- Delete Note -->
     <string name="question_delete_note">Are you sure you want to delete this note?</string>
+
+    <!-- About Us -->
+    <string name="about_us_text">Ariete is a team of young developers, working hard in order to extend their programming skills and abilities and bring their advanced projects to the community</string>
 </resources>
