@@ -2,6 +2,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" >
 
+    <!--    <uses-permission android:name="com.sec.android.provider.badge.permission.WRITE" />-->
+    <uses-permission android:name="com.sec.android.provider.badge.permission.READ" />
+
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+    <!--    <uses-permission-->
+    <!--       android:name="android.permission.WRITE_EXTERNAL_STORAGE"-->
+    <!--        android:maxSdkVersion="32"-->
+    <!--        tools:ignore="ScopedStorage" />-->
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -11,7 +22,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AdvancedNotes"
-        tools:targetApi="31" >
+        tools:targetApi="33" >
 
         <activity
             android:name=".activities.SplashScreenActivity"
@@ -27,9 +38,7 @@
         <activity
             android:name=".activities.MainActivity"
             android:exported="false"
-            android:screenOrientation="portrait">
-
-        </activity>
+            android:screenOrientation="portrait"/>
 
     </application>
 </manifest>
