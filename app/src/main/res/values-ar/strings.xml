@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name" translatable="false">Advanced Notes</string>
+    <string name="company_name" translatable="false">Ariete</string>
+
+    <string name="my_notes">ملاحظاتي</string>
+    <string name="search_notes">ملاحظات البحث</string>
+    <string name="no_notes">لا توجد ملاحظات</string>
+
+    <string name="title_hint">عنوان</string>
+    <string name="input_hint">أكتب ملاحظتك هنا</string>
+
+    <string name="additional">إضافي</string>
+    <string name="change_color">غير اللون</string>
+    <string name="add_image">إضافة صورة</string>
+    <string name="add_url">إضافة رابط</string>
+    <string name="delete_note">حذف الملاحظة</string>
+
+    <string name="warning_title">تحذير</string>
+    <string name="warning_text">هناك بالفعل ملاحظة بنفس العنوان. غيرها من فضلك!</string>
+    <string name="ok">نعم</string>
+
+    <string name="selection_of_color">اختيار اللون</string>
+    <string name="confirm">يتأكد</string>
+    <string name="cancel">يلغي</string>
+
+    <string name="enter_url">إدخال عنوان الموقع</string>
+
+    <string name="question_delete_note">هل أنت متأكد أنك تريد حذف هذه الملاحظة؟</string>
+
+    <string name="settings">إعدادات</string>
+
+    <string name="about_us">معلومات عنا</string>
+    <string name="about_us_text">Ariete هو فريق من المطورين الشباب، يعملون بجد من أجل توسيع مهاراتهم وقدراتهم في البرمجة وتقديم مشاريعهم المتقدمة إلى المجتمع</string>
+</resources>

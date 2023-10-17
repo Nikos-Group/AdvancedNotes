@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name" translatable="false">Advanced Notes</string>
+    <string name="company_name" translatable="false">Ariete</string>
+
+    <string name="my_notes">Мои заметки</string>
+    <string name="search_notes">Поиск заметок</string>
+    <string name="no_notes">Заметок нет</string>
+
+    <string name="title_hint">Название</string>
+    <string name="input_hint">Напишите здесь твою заметку</string>
+
+    <string name="additional">Дополнительно</string>
+    <string name="change_color">Изменить цвет</string>
+    <string name="add_image">Добавить изображение</string>
+    <string name="add_url">Добавить ссылку</string>
+    <string name="delete_note">Удалить заметку</string>
+
+    <string name="warning_title">Ой - ой!</string>
+    <string name="warning_text">Уже существует заметка с таким названием. Пожалуйста, измените его.</string>
+    <string name="ok">ОК</string>
+
+    <string name="selection_of_color">Выбор цвета</string>
+    <string name="confirm">Подтвердить</string>
+    <string name="cancel">Отмена</string>
+
+    <string name="enter_url">Введите ссылку</string>
+
+    <string name="question_delete_note">Вы уверены, что хотите удалить эту заметку?</string>
+
+    <string name="settings">Настройки</string>
+
+    <string name="about_us">О нас</string>
+    <string name="about_us_text">Ariete - это команда юных разработчиков, которые усердно работают для прокачки своих навыков в программировании и выпуска своих передовых проектов</string>
+</resources>

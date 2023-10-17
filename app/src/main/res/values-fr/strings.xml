@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name" translatable="false">Advanced Notes</string>
+    <string name="company_name" translatable="false">Ariete</string>
+
+    <string name="my_notes">Mes notes</string>
+    <string name="search_notes">Notes de recherche</string>
+    <string name="no_notes">Il n\'y a pas de notes</string>
+
+    <string name="title_hint">Title</string>
+    <string name="input_hint">Tapez votre note ici</string>
+
+    <string name="additional">Supplémentaire</string>
+    <string name="change_color">Changer de couleur</string>
+    <string name="add_image">Ajouter une image</string>
+    <string name="add_url">Ajouter l\'URL</string>
+    <string name="delete_note">Supprimer la note</string>
+
+    <string name="warning_title">Avertissement</string>
+    <string name="warning_text">Il existe déjà une note portant le même titre. S\'il vous plaît, changez-le !</string>
+    <string name="ok">D\'ACCORD</string>
+
+    <string name="selection_of_color">Sélection des couleurs</string>
+    <string name="confirm">Confirmer</string>
+    <string name="cancel">Annuler</string>
+
+    <string name="enter_url">Enter URL</string>
+
+    <string name="question_delete_note">Êtes-vous sûr de vouloir supprimer cette note ?</string>
+
+    <string name="settings">Paramètres</string>
+
+    <string name="about_us">À propos de nous</string>
+    <string name="about_us_text">Ariete est une équipe de jeunes développeurs qui travaillent dur pour étendre leurs compétences et capacités en programmation et apporter leurs projets avancés à la communauté.</string>
+</resources>
