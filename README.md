@@ -1,6 +1,6 @@
 # Advanced Notes 
 
-![Иконка](/app/src/main/res/mipmap-xxxhdpi
+![Иконка](AdvancedNotes/app/src/main/res/mipmap-xxxhdpi
 /ic_launcher.png, "Иконка приложения")
 
 **Advanced Notes** - это приложение для записи различных заметок
